@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Depot Realtime Test</title></head>
+<body>
+  <h1>Depot Realtime Test</h1>
+  <pre id="log"></pre>
+  <script>
+    const log = document.getElementById('log');
+    const ws = new WebSocket('ws://localhost:8000/realtime/ws/dashboard');
+    ws.onmessage = (event) => { log.textContent += event.data + '\n'; };
+    ws.onopen = () => ws.send('ping');
+  </script>
+</body>
+</html>
