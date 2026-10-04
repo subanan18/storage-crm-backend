@@ -132,3 +132,17 @@ Authentication/roles, file/image upload storage (S3 etc.), AI features
 (vision, semantic search, duplicate detection), and QR/barcode scanning
 hardware integration. The schema and routes are structured so these can be
 added without reshaping what's already here.
+
+## ✅ API verification checklist
+
+After a backend change, a quick manual verification can be done from FastAPI's interactive `/docs` page:
+
+- create or list a company;
+- create a project for that company;
+- register an item and confirm its status/location;
+- change the item's status or location and verify a movement record is written;
+- create a retrieval request and advance its workflow;
+- confirm `/dashboard/stats` returns aggregate data.
+
+For schema changes, generate and review an Alembic migration before running `alembic upgrade head`.
+
